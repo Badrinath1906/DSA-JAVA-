@@ -1,15 +1,20 @@
 class Solution {
     public int numberOfSubstrings(String s) {
-        int[] last = {-1, -1, -1}; // a → 0, b → 1, c → 2
-        int ans = 0;
-
+        int LastA = -1;
+        int LastB = -1;
+        int LastC = -1;
+        int result = 0;
         for (int i = 0; i < s.length(); i++) {
-            last[s.charAt(i) - 'a'] = i;
-            
-            int minIndex = Math.min(last[0], Math.min(last[1], last[2]));
-            ans += minIndex + 1;
+            if (s.charAt(i) == 'a')
+                LastA = i;
+            else if (s.charAt(i) == 'b')
+                LastB = i;
+            else
+                LastC = i;
+            int minIndex = Math.min(LastA, Math.min(LastB, LastC));
+             result += (minIndex + 1);
         }
+        return result;
 
-        return ans;
     }
 }
