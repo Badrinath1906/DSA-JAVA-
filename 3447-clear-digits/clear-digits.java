@@ -6,10 +6,11 @@ class Solution {
                 if (sb.length() > 0) {
                     sb.deleteCharAt(sb.length() - 1);
                 }
-            } else
+            }
+             else
                 sb.append(c);
         }
-
+        
         return sb.toString();
     }
 }
