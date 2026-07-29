@@ -4,16 +4,16 @@ class Solution {
         int n = matrix[0].length;
         int low = 0;
         int high = m * n - 1;
+
         while (low <= high) {
             int mid = low + (high - low) / 2;
-
-            int row = mid / n;//defines index beloning to which row no...
+            int row = mid / n;//index belonging to which row no...
             int col = mid % n;
-
             int val = matrix[row][col];
+
             if (val == target)
                 return true;
-            else if (val < target)
+            if (val < target)
                 low = mid + 1;
             else
                 high = mid - 1;
