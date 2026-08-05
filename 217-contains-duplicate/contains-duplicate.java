@@ -4,8 +4,8 @@ class Solution {
         for (int num : nums) {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
-        for (int key : map.keySet()) {
-            if (map.get(key) > 1)
+        for (int freq : map.values()) {
+            if (freq > 1)
                 return true;
         }
         return false;
