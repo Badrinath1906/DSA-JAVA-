@@ -1,16 +1,19 @@
 class Solution {
-    public int maxArea(int[] h) {
-        int n= h.length;
-        return area(h, 0, n-1 );
-    }
+    public int maxArea(int[] height) {
+        int n = height.length;
+        int left = 0;
+        int right = n - 1;
+        int maxArea = Integer.MIN_VALUE;
+        while (left < right) {
+            int width = right - left;
+            int minHeight = Math.min(height[left], height[right]);
+            maxArea = Math.max(maxArea, minHeight * width);
+            if (height[left] < height[right])
+                left++;
+            else
+                right--;
+        }
+        return maxArea;
 
-    int area(int[] h, int left, int right) {
-        if (left >= right) return 0; // base case hai
-        int curr = (right - left) * Math.min(h[left], h[right]); // ye width*length =area
-
-        if (h[left] < h[right])
-            return Math.max(curr, area(h, left + 1, right)); // recursively call
-        else
-            return Math.max(curr, area(h, left, right - 1));
     }
 }
